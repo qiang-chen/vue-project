@@ -1,9 +1,12 @@
 
-const bodyParser=require("body-parser")
+//废弃了  把这个东西移到了routes里面的index.js里面去了
 
-module.exports=function(app){
-    app.post("/user/login",bodyParser.json(),(req,res)=>{
-        console.log(req.body);
-        res.send({code:1})
-    })  
+
+const bodyParser = require("body-parser")
+const {Api,Login}=require("../controller/user.js")
+
+
+module.exports = function (app) {
+    app.get("/api",Api)
+    app.post("/user/login", bodyParser.json(),Login)
 }
